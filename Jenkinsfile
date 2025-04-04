@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t priyachitra/contactmanager:1.0 .'
+                    bat 'docker build -t priyachitra/contactmanager:2.0 .'
                 }
             }
         }
