@@ -7,24 +7,24 @@ pipeline{
         stages{
             stage('Build Maven'){
                 steps{
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AjushaLalasan/contactmanager_jenkins']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/priyasri923/contactmanager_jenkins.git']])
                     bat 'mvn clean install'
                 }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t ajusha/contactmanager .'
+                    bat 'docker build -t priyachitra/contactmanager .'
                 }
             }
         }
         stage('Push Image to DockerHub') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'ajusha-dockerhub-sec', variable: 'dockerpwd')]) {
-                        bat "docker login -u ajusha -p ${dockerpwd}"
+                    withCredentials([string(credentialsId: 'chitra-dockerhub-sec', variable: 'dockerpwd')]) {
+                        bat "docker login -u priyachitra -p ${dockerpwd}"
                     }
-                    bat 'docker push ajusha/contactmanager'
+                    bat 'docker push priychitra/contactmanager'
                 }
             }
         }
