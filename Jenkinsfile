@@ -39,7 +39,7 @@ pipeline {
                    withCredentials([file(credentialsId: 'kubeconfig-credentials', variable: 'KUBECONFIG')]) {
                     bat "kubectl apply -f deployment.yaml --kubeconfig=%KUBECONFIG%"
                     bat "kubectl apply -f service.yaml --kubeconfig=%KUBECONFIG%"
-                    bat "kubectl rollout status deployment/contactmanager-deployment --kubeconfig=%KUBECONFIG%"
+                    bat "kubectl rollout status deployment/spring-bootapp-k8s-deployment --kubeconfig=%KUBECONFIG%"
                 }
                 }
             }
