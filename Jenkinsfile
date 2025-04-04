@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'chitra-dockerhub-sec', variable: 'dockerpwd')]) {
                         bat "docker login -u priyachitra -p ${dockerpwd}"
                     }
-                    bat 'docker push priyachitra/contactmanager:1.0'
+                    bat 'docker push priyachitra/contactmanager:2.0'
 
                 }
             }
