@@ -36,7 +36,11 @@ pipeline {
         stage('Deploy to k8s'){
             steps{
                 script{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'kubeconfig-credentials')
+                   withCredentials([file(credentialsId: 'kubeconfig-credentials', variable: 'KUBECONFIG')]) {
+                    bat "kubectl apply -f deployment.yaml --kubeconfig=%KUBECONFIG%"
+                    bat "kubectl apply -f service.yaml --kubeconfig=%KUBECONFIG%"
+                    bat "kubectl rollout status deployment/contactmanager-deployment --kubeconfig=%KUBECONFIG%"
+                }
                 }
             }
         }
