@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t priyachitra/contactmanager:latest .'
+                    bat 'docker build -t priyachitra/contactmanager:1.0 .'
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'chitra-dockerhub-sec', variable: 'dockerpwd')]) {
                         bat "docker login -u priyachitra -p ${dockerpwd}"
                     }
-                    bat 'docker push priychitra/contactmanager:latest'
+                    bat 'docker push priychitra/contactmanager:1.0'
 
                 }
             }
