@@ -26,17 +26,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'chitra-dockerhub-sec', variable: 'dockerpwd')]) {
-<<<<<<< HEAD
                         bat "docker login -u priyachitra -p ${dockerpwd}"
-=======
-                        bat "docker login -u priyachitra -p %dockerpwd%"
->>>>>>> branch 'main' of https://github.com/priyasri923/contactmanager_jenkins.git
                     }
-<<<<<<< HEAD
                     bat 'docker push priychitra/contactmanager'
-=======
-                    bat 'docker push priyachitra/contactmanager'
->>>>>>> branch 'main' of https://github.com/priyasri923/contactmanager_jenkins.git
+
                 }
             }
         }
